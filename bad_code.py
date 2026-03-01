@@ -1,17 +1,20 @@
+def _process_item(item):
+    if isinstance(item, int):
+        if item % 2 == 0:
+            return item * 2
+        return item * 3
+
+    if isinstance(item, str):
+        if len(item) > 3:
+            return item.upper()
+        return item.lower()
+
+    return None
+
+
 def process_data(data):
     result = []
     for i in range(len(data)):
-        if isinstance(data[i], int):
-            if data[i] % 2 == 0:
-                result.append(data[i] * 2)
-            else:
-                result.append(data[i] * 3)
-        else:
-            if isinstance(data[i], str):
-                if len(data[i]) > 3:
-                    result.append(data[i].upper())
-                else:
-                    result.append(data[i].lower())
-            else:
-                result.append(None)
+        result.append(_process_item(data[i]))
     return result
+
